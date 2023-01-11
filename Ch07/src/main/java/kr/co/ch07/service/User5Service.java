@@ -6,27 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.ch07.dao.User5DAO;
+import kr.co.ch07.repository.User5Repo;
 import kr.co.ch07.vo.User5VO;
 
 @Service
 public class User5Service {
 	
 	@Autowired
-	private User5DAO dao;
+	private User5Repo repo;
 	
 	public void insertUser5(User5VO vo) {
-		dao.insertUser5(vo);
+		repo.save(vo);
 	}
 	public User5VO selectUser5(String uid) {
-		return dao.selectUser5(uid);
+		User5VO user = repo.findById(uid).get();
+		return user;
 	}
 	public List<User5VO> selectUser5s() {
-		return dao.selectUser5s();
+		List<User5VO> users = repo.findAll();
+		return users;
 	}
 	public void updateUser5(User5VO vo) {
-		dao.updateUser5(vo);
+		repo.save(vo);
 	}
 	public void deleteUser5(String uid) {
-		dao.deleteUser5(uid);
+		repo.deleteById(uid);
 	}
 }
