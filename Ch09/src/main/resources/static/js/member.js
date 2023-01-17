@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 $(document).ready(function(){
 	
 	// member 목록 1 출력
@@ -29,8 +30,9 @@ $(document).ready(function(){
 		});
 	});
 	
+	
 	// member 등록
-	$('.member_list2').click(function(){
+	$('.member_register').click(function(){
 		
 		let jsonData = {
 			"uid":"r101",
@@ -44,8 +46,8 @@ $(document).ready(function(){
 		};
 		
 		$.ajax({
-			url: '/Ch09/member/a101',
-			method: 'GET',
+			url: '/Ch09/member',
+			method: 'POST',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data){
@@ -57,25 +59,41 @@ $(document).ready(function(){
 	$('.member_modify').click(function(){
 		
 		let jsonData = {
-			"uid":"r101",
+			"uid":"a101",
 			"pass":"1234",
-			"name":"홍길동",
+			"name":"박혁거세",
 			"hp":"010-8888-8888",
 			"pos":"사장",
-			"dep":"101",
-			"rdate":"",
+			"dep":"101"
+			//"rdate":"now",
 			
 		};
 		
 		$.ajax({
-			url: '/Ch09/member/a101',
-			method: 'GET',
+			url: '/Ch09/member',
+			method: 'PUT',
 			data: jsonData,
 			dataType: 'json',
 			success: function(data){
 				console.log(data)
 			}
 		});
+	});
+	
+	// member 삭제
+	
+	$('.member_delete').click(function(){
+		
+		$.ajax({
+			url: '/Ch09/member/a111',
+			method: 'delete',
+			dataType: 'json',
+			success: function(data){
+				console.log(data)
+			}
+		});
+		
+		
 	});
 	
 	
