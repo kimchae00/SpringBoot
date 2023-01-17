@@ -32,18 +32,20 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member")
-	public void register(MemberVO vo) {
-		
+	public List<MemberVO> register(MemberVO vo) {
+		service.insertMember(vo);
+		return service.selectMembers();
 	}
 	
 	@PutMapping("/member")
-	public void modify(MemberVO vo) {
-		
+	public List<MemberVO> modify(MemberVO vo) {
+		service.updateMember(vo);
+		return service.selectMembers();
 	}
 
 	@DeleteMapping("/member/{uid}")
-	public void delete(@PathVariable("uid") String uid) {
-		
+	public List<MemberVO> delete(@PathVariable("uid") String uid) {
+		service.deleteMember(uid);
+		return service.selectMembers();
 	}
-	
 }
