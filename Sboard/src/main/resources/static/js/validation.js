@@ -17,38 +17,54 @@ let isNickOk  = false;
 let isEmailOk = false;
 let isHpOk 	  = false;
 
-
-$(function(){
-	// 아이디 유효성 검증
-	$('#btnUidCheck').click(function(){
+// 순수 자바스크립트(바닐라 스크립트) AJAX 처리 로직(아이디)
+window.onload = () => {
+	
+	const btnCheckUid = document.getElementById('btnUidCheck');
+	
+	btnCheckUid.addEventListener('click', ()=>{
 		
-		let uid = $('input[name=uid]').val();
+		let uid = document.querySelector('input[name=uid]').value;
+		const resultUid = document.querySelector(".resultUid");
 		
-		if(isUidOk){
-			return;
-		}
 		if(!uid.match(regUid)){
 			isUidOk = false;
-			$('.resultUid').css('color', 'red').text('아이디가 유효하지 않습니다.');
+			resultUid.innerText = "아이디가 유효하지 않습니다.";
+		    resultUid.style.color = "red";
 			return;
 		}
 		
-		$.ajax({
-			url: '/Sboard/user/checkUid',
-			method: 'get',
-			data: {"uid":uid},
-			dataType: 'json',
-			success: function(data){
-				if(data.result == 0){
-					isUidOk = true;
-					$('.resultUid').css('color', 'green').text('사용 가능한 아이디입니다.')
-				}else{
-					isUidOk = false;
-					$('.resultUid').css('color', 'red').text('이미 사용중인 아이디입니다.')
-				}
-			}
-		});
+		// ajax 부분
+		const xhr = new XMLHttpRequest();
+		xhr.open("GET", "/Sboard/user/checkUid?uid="+uid);
+		xhr.responseType = "json";
+		xhr.send();
+		
+		xhr.onreadystatechange = function(){
+			
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				
+				if (xhr.status === 200) {
+		    		const data = xhr.response;  				    		
+		    		
+		    		if(data.result == 1){
+						isUidOk = true;  				    			
+		    			resultUid.innerText = "이미 사용중인 아이디 입니다.";
+		    			resultUid.style.color = "red";
+		    		}else{
+						isUidOk = false;
+		    			resultUid.innerText = "사용 가능한 아이디 입니다.";
+		    			resultUid.style.color = "green";
+		    		}
+		      	} else {
+		        	alert('Request Error!');
+		      	}
+		    }
+		};
 	});
+};
+
+$(function(){
 	
 	// 비밀번호 일치여부 확인
 	$('input[name=pass2]').focusout(function(){
