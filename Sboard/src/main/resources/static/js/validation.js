@@ -17,6 +17,7 @@ let isNickOk  = false;
 let isEmailOk = false;
 let isHpOk 	  = false;
 
+/*
 // 순수 자바스크립트(바닐라 스크립트) AJAX 처리 로직(아이디)
 window.onload = () => {
 	
@@ -63,8 +64,39 @@ window.onload = () => {
 		};
 	});
 };
+*/
 
 $(function(){
+	
+	// 아이디 검증
+	$('#btnUidCheck').click(function(){
+		let uid = $('input[name=uid]').val();
+		
+		if(isUidOk){
+			return;
+		}
+		if(!uid.match(regUid)){
+			isUidOk = false;
+			$('.resultUid').css('color', 'red').text('아이디가 유효하지 않습니다.');
+			return;
+		}
+		
+		$.ajax({
+			url : '/Sboard/user/checkUid',
+			method : 'get',
+			data : {"uid":uid},
+			dataType : 'json',
+			success : function(data){
+				if(data.result == 0){
+					isUidOk = true;
+					$('.resultUid').css('color', 'green').text('사용 가능한 아이디입니다.')
+				}else{
+					isUidOk = false;
+					$('.resultUid').css('color', 'red').text('이미 사용중인 아이디입니다.')
+				}
+			}
+		});
+	});
 	
 	// 비밀번호 일치여부 확인
 	$('input[name=pass2]').focusout(function(){

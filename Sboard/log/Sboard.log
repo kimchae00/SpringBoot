@@ -12636,3 +12636,66 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2023-01-18 13:15:03.801  INFO 8000 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/Sboard]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-01-18 13:15:03.802  INFO 8000 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2023-01-18 13:15:03.803  INFO 8000 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-18 13:23:21.191  INFO 8000 --- [RMI TCP Connection(18)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-01-18 13:23:21.200  INFO 8000 --- [RMI TCP Connection(18)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-01-18 13:23:21.201  INFO 8000 --- [RMI TCP Connection(18)-127.0.0.1] o.a.c.c.C.[.[localhost].[/Sboard]        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-01-18 13:23:21.205  INFO 8000 --- [RMI TCP Connection(18)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-18 13:23:21.208  INFO 8000 --- [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-18 13:23:21.217  INFO 8000 --- [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-18 13:24:22.798  INFO 5492 --- [restartedMain] kr.co.sboard.SboardApplication           : Starting SboardApplication using Java 17.0.5 on DESKTOP-QOTDKI5 with PID 5492 (C:\Users\java1\Desktop\Workspace\SpringBoot\Sboard\target\classes started by java1 in C:\Users\java1\Desktop\Workspace\SpringBoot\Sboard)
+2023-01-18 13:24:22.800  INFO 5492 --- [restartedMain] kr.co.sboard.SboardApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-01-18 13:24:22.850  INFO 5492 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-18 13:24:22.851  INFO 5492 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-18 13:24:23.458  INFO 5492 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-18 13:24:23.506  INFO 5492 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 1 JPA repository interfaces.
+2023-01-18 13:24:24.074  INFO 5492 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-18 13:24:24.084  INFO 5492 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-18 13:24:24.085  INFO 5492 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-18 13:24:24.167  INFO 5492 --- [restartedMain] o.a.c.c.C.[.[localhost].[/Sboard]        : Initializing Spring embedded WebApplicationContext
+2023-01-18 13:24:24.168  INFO 5492 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1317 ms
+2023-01-18 13:24:24.344  INFO 5492 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-18 13:24:24.391  INFO 5492 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-18 13:24:24.562  INFO 5492 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-18 13:24:24.662  INFO 5492 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-18 13:24:24.948  INFO 5492 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-18 13:24:24.971  INFO 5492 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2023-01-18 13:24:25.580  INFO 5492 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-18 13:24:25.589  INFO 5492 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-18 13:24:26.118  WARN 5492 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-18 13:24:26.254  INFO 5492 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6387139d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@474f36e, org.springframework.security.web.context.SecurityContextPersistenceFilter@2376dff6, org.springframework.security.web.header.HeaderWriterFilter@1a3e88b9, org.springframework.security.web.authentication.logout.LogoutFilter@6c0a8c55, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70d7478c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b95ec23, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22aac38f, org.springframework.security.web.session.SessionManagementFilter@7e6d0db, org.springframework.security.web.access.ExceptionTranslationFilter@7054d2a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3ae702ac]
+2023-01-18 13:24:26.579  INFO 5492 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-18 13:24:26.626  INFO 5492 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/Sboard'
+2023-01-18 13:24:26.636  INFO 5492 --- [restartedMain] kr.co.sboard.SboardApplication           : Started SboardApplication in 4.199 seconds (JVM running for 5.006)
+2023-01-18 13:24:53.141  INFO 5492 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/Sboard]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-18 13:24:53.141  INFO 5492 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-18 13:24:53.144  INFO 5492 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-01-18 13:27:09.338  INFO 5492 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 4 class path changes (0 additions, 0 deletions, 4 modifications)
+2023-01-18 13:27:09.346  INFO 5492 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-01-18 13:27:09.347  INFO 5492 --- [Thread-5] o.a.c.c.C.[.[localhost].[/Sboard]        : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-01-18 13:27:09.352  INFO 5492 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-18 13:27:09.355  INFO 5492 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-18 13:27:09.362  INFO 5492 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-18 13:27:09.446  INFO 5492 --- [restartedMain] kr.co.sboard.SboardApplication           : Starting SboardApplication using Java 17.0.5 on DESKTOP-QOTDKI5 with PID 5492 (C:\Users\java1\Desktop\Workspace\SpringBoot\Sboard\target\classes started by java1 in C:\Users\java1\Desktop\Workspace\SpringBoot\Sboard)
+2023-01-18 13:27:09.447  INFO 5492 --- [restartedMain] kr.co.sboard.SboardApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-01-18 13:27:09.630  INFO 5492 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-18 13:27:09.639  INFO 5492 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 1 JPA repository interfaces.
+2023-01-18 13:27:09.741  INFO 5492 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-18 13:27:09.741  INFO 5492 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-18 13:27:09.741  INFO 5492 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-18 13:27:09.758  INFO 5492 --- [restartedMain] o.a.c.c.C.[.[localhost].[/Sboard]        : Initializing Spring embedded WebApplicationContext
+2023-01-18 13:27:09.759  INFO 5492 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 310 ms
+2023-01-18 13:27:09.791  INFO 5492 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-18 13:27:09.796  INFO 5492 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-01-18 13:27:09.806  INFO 5492 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-01-18 13:27:09.807  INFO 5492 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2023-01-18 13:27:09.839  INFO 5492 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-18 13:27:09.839  INFO 5492 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-18 13:27:09.939  WARN 5492 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-18 13:27:09.970  INFO 5492 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@e329a59, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5aca71e4, org.springframework.security.web.context.SecurityContextPersistenceFilter@33f23ff, org.springframework.security.web.header.HeaderWriterFilter@61f9fa2, org.springframework.security.web.authentication.logout.LogoutFilter@59b85446, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a0d67, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a426041, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a0d608e, org.springframework.security.web.session.SessionManagementFilter@11930b61, org.springframework.security.web.access.ExceptionTranslationFilter@1ce3f0b7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@65043118]
+2023-01-18 13:27:10.098  INFO 5492 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-18 13:27:10.111  INFO 5492 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/Sboard'
+2023-01-18 13:27:10.118  INFO 5492 --- [restartedMain] kr.co.sboard.SboardApplication           : Started SboardApplication in 0.708 seconds (JVM running for 168.487)
+2023-01-18 13:27:10.120  INFO 5492 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-01-18 13:29:31.534  INFO 5492 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/Sboard]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-18 13:29:31.534  INFO 5492 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-18 13:29:31.535  INFO 5492 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
