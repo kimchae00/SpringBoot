@@ -3,6 +3,7 @@ package kr.co.sboard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import kr.co.sboard.dao.UserDAO;
@@ -17,6 +18,9 @@ public class UserService {
 	private UserDAO dao;
 	
 	@Autowired
+	private PasswordEncoder passwordEncoder; 
+	
+	@Autowired
 	private UserRepo repo;
 	
 	public TermsVO selectTerms() {
@@ -25,10 +29,7 @@ public class UserService {
 	
 	public int insertUser(UserVO vo) {
 		// 비밀번호 암호화
-		String pass = vo.getPass2();
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		vo.setPass(encoder.encode(pass));
-
+		vo.setPass(passwordEncoder.encode(vo.getPass2()));
 		int result = dao.insertUser(vo);
 		return result;
 	}

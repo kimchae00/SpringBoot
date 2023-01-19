@@ -1,0 +1,12 @@
+텍스트 인코딩 설정
+➊ [General] → [Workspace] → Text file encoding 항목을 Other 로 변경한 뒤 UTF-8로 설정
+ ➋ [General] → [Content Types] → Java Class File에 대한 Default encoding 값을 UTF-8 로 입력 후 <Update> 버튼
+➌ [General]→[Content Types] → [Text] → JSP 항목을 UTF-8 로 변경 후 <Update> 버튼
+[➍ [Web] → [HTML Files], [JSP Files] 항목을 ISO 10646/Unicode(UTF-8)로 변경
+
+<서버에 프로젝트 재배포 시 유의사항>
+AWS에 프로젝트의 war 파일을 제거 시, home 디렉토리에 있는 프로젝트 폴더도 다 같이 날라갑니다.
+war 파일 제거 혹은 변경 전에 꼭 파일 업로드의 저장 폴더(이미지 폴더)는 백업해줘야 합니다.
+
+<산출물 작업 시 유의사항>
+연도날짜 쓰고 자기 이름 쓰고 작업하기

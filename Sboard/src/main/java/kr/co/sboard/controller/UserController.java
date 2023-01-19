@@ -27,10 +27,8 @@ public class UserController {
 	public String login() {
 		return "/user/login";
 	}
-	
-	
 
-	@GetMapping("/user/register")
+	@GetMapping("user/register")
 	public String register() {
 		return "/user/register";
 	}
