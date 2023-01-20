@@ -2,11 +2,21 @@ package kr.co.sboard.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,75 +34,147 @@ public class ArticleService {
 	
 	public int insertArticle(ArticleVO vo) {
 		
-		int result = 0;
-		MultipartFile file = vo.getFname();
-		
-		if(file.isEmpty()) {
-			// 파일 첨부 안했을 때
-			vo.setFile(0);
-			result = dao.insertArticle(vo);
-			
-			log.info("no :" + vo.getNo());
-			
-		}else {
-			// 파일 첨부 했을 때
-			vo.setFile(1);
-			result = dao.insertArticle(vo);
-			
-			log.info("no :" + vo.getNo());
-			
-			// 파일 업로드
-			FileVO fileVO = new FileVO();
-			fileVO.setParent(vo.getNo());
-			
-			fileUpload(file, fileVO);
-			
-			// 파일 등록
-			dao.insertFile(fileVO);
+		// 글등록
+		int result = dao.insertArticle(vo);
+		// 파일 업로드
+		FileVO fvo = fileUpload(vo);
+		// 파일 등록
+		if(fvo != null) {
+			dao.insertFile(fvo);
 		}
 		return result;
+	}
+	
+	public int selectCountTotal() {
+		return dao.selectCountTotal();
 	}
 	
 	public ArticleVO selectArticle(int no) {
 		return dao.selectArticle(no);
 	}
-	
-	public List<ArticleVO> selectArticles() {
-		return dao.selectArticles();
+	public List<ArticleVO> selectArticles(int start) {
+		return dao.selectArticles(start);
 	}
-	
+	public FileVO selectFile(int fno) {
+		return dao.selectFile(fno);
+	}
+	public int updateFileDownload(int fno) {
+		return dao.updateFileDownload(fno);
+	}
 	public int updateArticle(ArticleVO vo) {
 		return dao.updateArticle(vo);
 	}
-	
 	public int deleteArticle(int no) {
 		return dao.deleteArticle(no);
+	}
+	public String deleteFile(int parent) {
+		return dao.deleteFile(parent);
 	}
 	
 	// 파일 업로드
 	@Value("${spring.servlet.multipart.location}")
 	private String uploadPath;
 	
-	public void fileUpload(MultipartFile file, FileVO fileVO) {
-		// 시스템 파일 경로
-		String path = new File(uploadPath).getAbsolutePath();
-	
-		// 새 파일명 생성
-		String oName = file.getOriginalFilename();
-		String ext = oName.substring(oName.lastIndexOf("."));
-		String nName = UUID.randomUUID().toString()+ext;
-
-		// 파일 저장
-		fileVO.setOriName(oName);
-		fileVO.setNewName(nName);
+	public ResponseEntity<Resource> fileDownload(FileVO vo) throws IOException {
 		
-		try {
-			file.transferTo(new File(path, nName));
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Path path = Paths.get(uploadPath+"/"+vo.getNewName());
+		log.info("path : "+path);
+		
+		String contentType = Files.probeContentType(path);
+		log.info("conetentType : "+contentType);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentDisposition(ContentDisposition
+										.builder("attachment")
+										.filename(vo.getOriName(), StandardCharsets.UTF_8)
+										.build());
+		
+		headers.add(HttpHeaders.CONTENT_TYPE, contentType);
+		
+		Resource resource = new InputStreamResource(Files.newInputStream(path));
+		
+		return new ResponseEntity<>(resource, headers, HttpStatus.OK);
 	}
 	
+	public FileVO fileUpload(ArticleVO vo) {
+		MultipartFile file = vo.getFname();
+		FileVO fvo = null;
+		
+		if(!file.isEmpty()) {
+			// 시스템 파일 경로
+			String path = new File(uploadPath).getAbsolutePath();
+		
+			// 새 파일명 생성
+			String oName = file.getOriginalFilename();
+			String ext = oName.substring(oName.lastIndexOf("."));
+			String nName = UUID.randomUUID().toString()+ext;
+			
+			// 파일 저장
+			try {
+				file.transferTo(new File(path, nName));
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			fvo = FileVO.builder()
+							.parent(vo.getNo())
+							.oriName(oName)
+							.newName(nName)
+							.build();
+		}
+		return fvo;
+	}
+	
+	/////////// 페이징 처리 ////////////
+	// 현재 페이지 번호
+	public int getCurrentPage(String pg) {
+		int currentPage = 1;
+		
+		if(pg != null) {
+			currentPage = Integer.parseInt(pg);
+		}
+		return currentPage;
+	}
+	
+	// 페이지 시작값
+	public int getLimitStart(int currentPage) {
+		return (currentPage - 1) * 10;
+	}
+	
+	// 마지막 페이지 번호
+	public int getLastPageNum(int total) {
+		
+		int lastpageNum = 0;
+		
+		if(total % 10 == 0) {
+			lastpageNum = total / 10;
+			
+		}else {
+			lastpageNum = total / 10 + 1;
+		}
+		return lastpageNum;
+	}
+	
+	// 페이지 시작 번호
+	public int getpageStartNum(int total, int start) {
+		return total - start;
+	}
+	
+	// 페이지 그룹
+	public int[] getPageGroup(int currentPage, int lastPageNum) {
+		
+		int groupCurrent = (int) Math.ceil(currentPage / 10.0);
+		int groupStart = (groupCurrent - 1) * 10 + 1;
+		int groupEnd = groupCurrent * 10;
+		
+		if(groupEnd > lastPageNum) {
+			groupEnd = lastPageNum;
+		}
+		
+		int[] groups = {groupStart, groupEnd};
+		
+		return groups;
+	}
 }

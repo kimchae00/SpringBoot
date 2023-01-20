@@ -15,7 +15,7 @@ public class SboardApplication {
 		SpringApplication.run(SboardApplication.class, args);
 	}
 	
-	@GetMapping(value = {"/", "/index"})
+	@GetMapping(value = {"", "index"})
 	public String index(Principal principal) {
 		if(principal != null) {
 			// 로그인 했을 경우

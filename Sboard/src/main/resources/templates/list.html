@@ -17,18 +17,26 @@
             <th>날짜</th>
             <th>조회</th>
         </tr>
-        <tr th:each="article:${articles}">
-            <td>[[${article.no}]]</td>
-            <td><a th:href="@{/view(no=${article.no})}">[[${article.title}]] ([[${article.comment}]])</a></td>
+        <tr th:each="article,i:${articles}">
+            <td>[[${pageStartNum - i.index}]]</td>
+            <td><a th:href="@{/view(no=${article.no},pg=${currentPage})}">[[${article.title}]] &#91;[[${article.comment}]]&#93;</a></td>
             <td>[[${article.nick}]]</td>
-            <td>[[${article.rdate.substring(2, 10)}]]</td>
+            <td>[[${article.rdate}]]</td>
             <td>[[${article.hit}]]</td>
         </tr>               
     </table>
     <div class="page">
-        <a href="#" class="prev">이전</a>
-        <a href="#" class="num current">1</a>
-        <a href="#" class="next">다음</a>
+	    <th:block th:if="${groups[0]>1}">
+	        <a th:href="@{/list(pg=${groups[0]-1})}" class="prev">이전</a>
+	    </th:block>
+	    
+	    <th:block th:each="num:${#numbers.sequence(groups[0],groups[1])}">
+	        <a th:href="@{/list(pg=${num})}" th:class="${num == currentPage?'num current':'num'}">[[${num}]]</a>
+	    </th:block>
+	    
+	    <th:block th:if="${groups[1]<lastPageNum}">
+	        <a th:href="@{/list(pg=${groups[1] + 1})}" class="next">다음</a>
+	    </th:block>
     </div>
     <a th:href="@{/write}" class="btnWrite">글쓰기</a>
 </main>

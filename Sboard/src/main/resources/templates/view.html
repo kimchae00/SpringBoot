@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>글보기</title>    
@@ -7,15 +8,16 @@
 </head>
 <th:block th:include="./_header.html"/>
 <main id="board" class="view">
-    <table th:each="article:${article}">
+    <table>
         <caption>글보기</caption>
         <tr>
             <th>제목</th>
             <td><input type="text" name="title" th:value="${article.title}" readonly/></td>
         </tr>
-        <tr>
+        <tr th:if="${article.file == 1}">
             <th>파일</th>
-            <td><a href="#">[[${article.oriName}]]</a><span> [[${article.download}]]</span>회 다운로드</td>
+            <td><a th:href="@{/download(fno=${article.fileVO.fno})}">[[${article.fileVO.oriName}]]</a>
+            <span> [[${article.fileVO.download}]]</span>회 다운로드</td>
         </tr>
         <tr>
             <th>내용</th>
@@ -24,9 +26,11 @@
     </table>
 
     <div>
-        <a href="#" class="btn btnRemove">삭제</a>
-        <a th:href="@{/modify}" class="btn btnModify">수정</a>
-        <a th:href="@{/list}" class="btn btnList">목록</a>
+    <th:block th:if="${#authentication.principal.user.uid} == ${article.uid}">
+        <a th:href="@{/delete(no=${article.no},pg=${currentPage})}" class="btn btnRemove">삭제</a>
+        <a th:href="@{/modify(no=${article.no},pg=${currentPage})}" class="btn btnModify">수정</a>
+    </th:block>
+        <a th:href="@{/list(pg=${currentPage})}" class="btn btnList">목록</a>
     </div>
 
     <!-- 댓글목록 -->

@@ -4,7 +4,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,8 +29,11 @@ public class ArticleVO {
 	private String regip;
 	private String rdate;
 	
+	public String getRdate() {
+		return rdate.substring(2, 10);
+	}
+	// 추가필드
 	private String nick;
-	private String oriName;
-	private int download;
+	private FileVO fileVO;
 	
 }
