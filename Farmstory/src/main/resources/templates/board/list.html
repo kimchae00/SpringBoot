@@ -12,7 +12,7 @@
             <th>날짜</th>
             <th>조회</th>
         </tr>
-        <!--/*
+
         <tr th:each="article,i:${articles}">
             <td>[[${pageStartNum - i.index}]]</td>
             <td><a th:href="@{/view(no=${article.no},pg=${currentPage})}">[[${article.title}]] &#91;[[${article.comment}]]&#93;</a></td>
@@ -20,10 +20,10 @@
             <td>[[${article.rdate}]]</td>
             <td>[[${article.hit}]]</td>
         </tr>
-        */-->
+
     </table>
     <div class="page">
-        <!--/*
+
         <th:block th:if="${groups[0]>1}">
             <a th:href="@{/list(pg=${groups[0]-1})}" class="prev">이전</a>
         </th:block>
@@ -35,10 +35,10 @@
         <th:block th:if="${groups[1]<lastPageNum}">
             <a th:href="@{/list(pg=${groups[1] + 1})}" class="next">다음</a>
         </th:block>
-        */-->
+
 
     </div>
-    <a th:href="@{/board/write}" class="btnWrite">글쓰기</a>
+    <a th:href="@{/board/write(group=${group}, cate=${cate})}" class="btnWrite">글쓰기</a>
 </main>
 <!-- 내용 끝 -->
 </article>

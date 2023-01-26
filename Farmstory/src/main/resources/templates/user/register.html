@@ -7,7 +7,7 @@
             <th>아이디</th>
             <td>
                 <input type="text" name="uid" placeholder="아이디 입력"/>
-                <button type="button"><img th:src="@{/img/chk_id.gif}" alt="중복확인"/></button>
+                <button type="button" id="btnUidCheck"><img th:src="@{/img/chk_id.gif}" alt="중복확인"/></button>
                 <span class="resultUid"></span>
             </td>
         </tr>
@@ -32,6 +32,7 @@
             <th>이름</th>
             <td>
                 <input type="text" name="name" placeholder="이름 입력"/>
+                <span class="resultName"></span>
             </td>
         </tr>
         <tr>
@@ -39,29 +40,31 @@
             <td>
                 <p>공백없이 한글, 영문, 숫자 입력</p>
                 <input type="text" name="nick" placeholder="별명 입력"/>
-                <button type="button"><img th:src="@{/img/chk_id.gif}" alt="중복확인"/></button>
-                <span class="resultPass"></span>
+                <button type="button"id="btnNickCheck"><img th:src="@{/img/chk_id.gif}" alt="중복확인"/></button>
+                <span class="resultNick"></span>
             </td>
         </tr>
         <tr>
             <th>이메일</th>
             <td>
                 <input type="email" name="email" placeholder="이메일 입력"/>
+                <span class="resultEmail"></span>
             </td>
         </tr>
         <tr>
             <th>휴대폰</th>
             <td>
                 <input type="text" name="hp" placeholder="- 포함 13자리 입력"/>
+                <span class="resultHp"></span>
             </td>
         </tr>
         <tr>
             <th>주소</th>
             <td>
-                <input type="text" name="zip" placeholder="우편번호 검색"/>
-                <button type="button"><img th:src="@{/img/chk_post.gif}" alt="우편번호 찾기"></button>
-                <input type="text" name="addr1" placeholder="기본주소 검색" readonly/>
-                <input type="text" name="addr2" placeholder="상세주소 입력"/>
+                <input type="text" name="zip" id="zip" placeholder="우편번호 검색"/>
+                <button type="button" onclick="postcode()"><img th:src="@{/img/chk_post.gif}" alt="우편번호 찾기"></button>
+                <input type="text" name="addr1" id="addr1" placeholder="기본주소 검색" readonly/>
+                <input type="text" name="addr2" id="addr2" placeholder="상세주소 입력"/>
             </td>
         </tr>
     </table>

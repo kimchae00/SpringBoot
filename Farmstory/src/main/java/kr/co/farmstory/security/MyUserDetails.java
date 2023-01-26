@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import kr.co.farmstory.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,13 +19,13 @@ import lombok.Setter;
 public class MyUserDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
-	//private UserEntity user;
+	private UserEntity user;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 계정이 갖는 권한 목록 리턴
 		List<GrantedAuthority> collector = new ArrayList<>();
-		//collector.add(new SimpleGrantedAuthority("ROLE_"+user.getGrade()));
+		collector.add(new SimpleGrantedAuthority("ROLE_"+user.getGrade()));
 		
 		return collector;
 	}
@@ -32,15 +33,13 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public String getPassword() {
 		// 계정이 갖는 비밀번호
-		//return user.getPass();
-		return null;
+		return user.getPass();
 	}
 
 	@Override
 	public String getUsername() {
 		// 계정이 갖는 아이디
-		//return user.getUid();
-		return null;
+		return user.getUid();
 	}
 
 	@Override

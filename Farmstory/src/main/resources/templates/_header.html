@@ -11,7 +11,11 @@
     <link rel="stylesheet" th:href="@{/css/user.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script th:src="@{/js/postcode.js}"></script>
+    <script th:src="@{/js/validation.js}"></script>
+
     <script>
         $(function(){
             $('.slider > ul').bxSlider({
@@ -32,8 +36,16 @@
             <a th:href="@{/index}" class="logo"><img th:src="@{/img/logo.png}" alt="로고"/></a>
             <p>
                 <a th:href="@{/index}">HOME |</a>
-                <a th:href="@{/user/login}">로그인 |</a>
-                <a th:href="@{/user/register}">회원가입 |</a>
+
+
+                    <a th:href="@{/user/login}">로그인 |</a>
+                    <a th:href="@{/user/register}">회원가입 |</a>
+
+
+
+                    <span class="nick" sec:authentication="principal.user.nick">길동</span>님 반갑습니다.
+                    <a th:href="@{/user/logout}" class="logout">[로그아웃]</a>
+
                 <a href="#">고객센터</a>
             </p>
             <img th:src="@{/img/head_txt_img.png}" alt="3만원 이상 무료배송"/>
