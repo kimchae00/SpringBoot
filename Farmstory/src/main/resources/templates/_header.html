@@ -36,15 +36,11 @@
             <a th:href="@{/index}" class="logo"><img th:src="@{/img/logo.png}" alt="로고"/></a>
             <p>
                 <a th:href="@{/index}">HOME |</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/user/login}">로그인 |</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/user/register}">회원가입 |</a>
 
-
-                    <a th:href="@{/user/login}">로그인 |</a>
-                    <a th:href="@{/user/register}">회원가입 |</a>
-
-
-
-                    <span class="nick" sec:authentication="principal.user.nick">길동</span>님 반갑습니다.
-                    <a th:href="@{/user/logout}" class="logout">[로그아웃]</a>
+                <label sec:authorize="isAuthenticated()"><span class="nick" sec:authentication="principal.user.nick">길동</span>님 |</label>
+                <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}" class="logout">로그아웃 |</a>
 
                 <a href="#">고객센터</a>
             </p>

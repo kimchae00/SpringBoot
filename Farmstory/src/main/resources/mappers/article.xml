@@ -40,5 +40,68 @@
             `rdate` =NOW();
     </insert>
 
+    <resultMap id="selectArticleResultMap" type="kr.co.farmstory.vo.ArticleVO">
+        <id column="no" property="no"/>
+        <result column="parent" property="parent" />
+        <result column="comment" property="comment" />
+        <result column="cate" property="cate" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="file" property="file" />
+        <result column="hit" property="hit" />
+        <result column="uid" property="uid" />
+        <result column="regip" property="regip" />
+        <result column="rdate" property="rdate" />
+        <result column="parent" property="parent" />
+
+        <association property="fileVO" javaType="kr.co.farmstory.vo.FileVO">
+            <id column="fno" property="fno"/>
+            <result column="parent" property="parent"/>
+            <result column="newName" property="newName"/>
+            <result column="oriName" property="oriName"/>
+            <result column="download" property="download"/>
+        </association>
+    </resultMap>
+
+    <select id="selectArticle"  resultMap="selectArticleResultMap">
+            select * from `board_article` as a
+            left join `board_file` as b
+            on a.no = b.parent
+            where `no`=#{no};
+    </select>
+
+    <select id="selectComments" resultType="kr.co.farmstory.vo.ArticleVO">
+        SELECT a.*, b.`nick` FROM `board_article` AS a
+            JOIN `board_user` AS b USING(`uid`)
+            WHERE `parent`=#{parent} ORDER BY `no` asc;
+    </select>
+
+    <select id="selectFile" resultType="kr.co.farmstory.vo.FileVO">
+        select * from `board_file` where `fno`=#{fno};
+    </select>
+
+    <update id="updateArticle">
+        update `board_article` set
+            `title`=#{title},
+            `content`=#{content}
+        where `no`=#{no};
+    </update>
+
+    <update id="updateFileDownload">
+        update `board_file` set `download`=`download`+1 where `fno`=#{fno};
+    </update>
+
+    <update id="updateArticleHit">
+        update `board_article` set `hit`=`hit`+1 where `no`=#{no};
+    </update>
+
+    <delete id="deleteArticle">
+        delete from `board_article` where `no`=#{no} or `parent`=#{parent};
+    </delete>
+
+    <delete id="deleteFile">
+        delete from `board_file` where `parent`=#{parent};
+    </delete>
+
 
 </mapper>

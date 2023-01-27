@@ -35,6 +35,18 @@
     border: 1px solid #bebebe;
     background: #fdfdfd;
 }
+
+#user.login > form > label {
+    position: absolute;
+        left: 50px;
+        bottom: -20px;
+}
+#user.login > form > #rememberMe {
+    position: absolute;
+        left: 115px;
+        bottom: -19px;
+}
+
 #user.login > .info {
     width: 100%;
     height: 104px;
@@ -164,6 +176,12 @@
 #user.register > form > div {
     float: right;
 }
+
+#user > .register > form .auth {
+    display: none;
+    margin-top: 6px;
+}
+
 #user.register > form > div > .btnCancel {
     display: inline-block;
     padding: 8px;

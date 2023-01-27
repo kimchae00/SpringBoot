@@ -32,6 +32,10 @@ header > p {
     float: right;
     margin-top: 16px;
 }
+header > div {
+    float: right;
+    margin-top: 16px;
+}
 header > img {
     float: right;
     clear: both;

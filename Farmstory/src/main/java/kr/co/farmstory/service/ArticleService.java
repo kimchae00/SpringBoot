@@ -40,7 +40,6 @@ public class ArticleService {
         return result;
     }
 
-
     public int selectCountTotal(String cate) {
         return dao.selectCountTotal(cate);
     }
@@ -48,14 +47,29 @@ public class ArticleService {
     public ArticleVO selectArticle(int no){
         return dao.selectArticle(no);
     }
+    public List<ArticleVO> selectComments(int parent){
+        return dao.selectComments(parent);
+    }
+    public int updateArticleHit(int no){
+        return dao.updateArticleHit(no);
+    }
     public List<ArticleVO> selectArticles(int start, String cate){
         return dao.selectArticles(start, cate);
+    }
+    public FileVO selectFile(int fno){
+        return dao.selectFile(fno);
+    }
+    public int updateFileDownload(int fno){
+        return dao.updateFileDownload(fno);
     }
     public int updateArticle(ArticleVO vo){
         return dao.updateArticle(vo);
     }
     public int deleteArticle(int no){
         return dao.deleteArticle(no);
+    }
+    public int deleteFile(int no){
+        return dao.deleteFile(no);
     }
 
     // 파일 업로드

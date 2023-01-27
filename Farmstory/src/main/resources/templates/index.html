@@ -10,21 +10,21 @@
         <img th:src="@{/img/main_slide_img_tit.png}" alt="사람과 자연을 사랑하는 팜스토리"/>
 
         <div class="banner">
-            <img src="./img/main_banner_txt.png" alt="GRAND OPEN"/>
-            <img src="./img/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
-            <img src="./img/main_banner_img.png" alt="과일"/>
+            <img th:src="@{/img/main_banner_txt.png}" alt="GRAND OPEN"/>
+            <img th:src="@{/img/main_banner_tit.png}" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
+            <img th:src="@{/img/main_banner_img.png}" alt="과일"/>
         </div>
     </div>
 
     <div class="quick">
-        <a href="#"><img src="./img/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
-        <a href="#"><img src="./img/main_banner_sub2_tit.png" alt="나도 요리사"></a>
+        <a th:href="@{/board/list(group=_community, cate=menu)}"><img th:src="@{/img/main_banner_sub1_tit.png}" alt="오늘의 식단"></a>
+        <a th:href="@{/board/list(group=_community, cate=chef)}"><img th:src="@{/img/main_banner_sub2_tit.png}" alt="나도 요리사"></a>
     </div>
 
     <div class="latest">
         <div>
-            <a href="#"><img src="./img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
-            <img src="./img/main_latest1_img.jpg" alt="이미지"/>
+            <a th:href="@{/board/list(group=_croptalk, cate=grow)}"><img th:src="@{/img/main_latest1_tit.png}" alt="텃밭 가꾸기"/></a>
+            <img th:src="@{/img/main_latest1_img.jpg}" alt="이미지"/>
             <table border="0">
                 <tr>
                     <td>></td>
@@ -54,7 +54,7 @@
             </table>
         </div>
         <div>
-            <a href="#"><img src="./img/main_latest2_tit.png" alt="귀농학교"/></a>
+            <a th:href="@{/board/list(group=_croptalk, cate=school)}"><img src="./img/main_latest2_tit.png" alt="귀농학교"/></a>
             <img src="./img/main_latest2_img.jpg" alt="이미지"/>
             <table border="0">
                 <tr>
@@ -85,7 +85,7 @@
             </table>
         </div>
         <div>
-            <a href="#"><img src="./img/main_latest3_tit.png" alt="농작물 이야기"/></a>
+            <a th:href="@{/board/list(group=_croptalk, cate=story)}"><img src="./img/main_latest3_tit.png" alt="농작물 이야기"/></a>
             <img src="./img/main_latest3_img.jpg" alt="이미지"/>
             <table border="0">
                 <tr>
@@ -131,8 +131,8 @@
                 </p>
             </div>
             <div class="btns">
-                <a href="#"><img src="./img/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
-                <a href="#"><img src="./img/main_sub2_cs_bt2.png" alt="자주묻는질문"></a>
+                <a th:href="@{/board/list(group=_community, cate=qna)}"><img src="./img/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
+                <a th:href="@{/board/list(group=_community, cate=faq)}"><img src="./img/main_sub2_cs_bt2.png" alt="자주묻는질문"></a>
                 <a href="#"><img src="./img/main_sub2_cs_bt3.png" alt="배송조회"></a>
             </div>
         </div>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Controller
 public class UserController {
@@ -63,5 +64,7 @@ public class UserController {
         map.put("result", result);
         return map;
     }
+
+
 
 }

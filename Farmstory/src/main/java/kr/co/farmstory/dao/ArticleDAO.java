@@ -16,9 +16,14 @@ public interface ArticleDAO {
     public int insertFile(FileVO vo);
     public int selectCountTotal(String cate);
     public ArticleVO selectArticle(int no);
+    public List<ArticleVO> selectComments(int parent);
+    public int updateArticleHit(int no);
     public List<ArticleVO> selectArticles( @Param("start") int start, @Param("cate") String cate);
+    public FileVO selectFile(int fno);
+    public int updateFileDownload(int fno);
     public int updateArticle(ArticleVO vo);
     public int deleteArticle(int no);
+    public int deleteFile(int no);
 
 
 }

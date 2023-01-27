@@ -1,20 +1,20 @@
 <th:block th:include="@{_header.html}"/>
-<th:block th:include="@{board/_community.html}"/>
+<th:block th:include="@{board/__${group}__.html}"/>
 <main id="board" class="modify">
     <form action="#" method="post">
         <table border="0">
             <caption>글수정</caption>
             <tr>
                 <th>제목</th>
-                <td><input type="text" name="title"  placeholder="제목을 입력하세요."/></td>
+                <td><input type="text" name="title" th:value="${article.title}"  placeholder="제목을 입력하세요."/></td>
             </tr>
             <tr>
                 <th>내용</th>
-                <td><textarea name="content"></textarea></td>
+                <td><textarea name="content" th:text="${article.content}"></textarea></td>
             </tr>
         </table>
         <div>
-            <a th:href="@{#}" class="btn btnCancel">취소</a>
+            <a th:href="@{/board/view(group=${group}, cate=${cate}, no=${article.no}, pg=${currentPage})}" class="btn btnCancel">취소</a>
             <input type="submit" value="수정완료" class="btn btnComplete"/>
         </div>
     </form>
