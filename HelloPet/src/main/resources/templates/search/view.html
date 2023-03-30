@@ -51,7 +51,7 @@
 				<label sec:authorize="hasAuthority('ROLE_7')" style="display: none;"><span class="uid" name="uid" sec:authentication="principal.member.uid">길동</span></label>
 				<label sec:authorize="hasAuthority('ROLE_2')"  style="display: none;"><span class="uid" name="uid" sec:authentication="principal.medical.uid">길동</span></label>
 				<label sec:authorize="hasAuthority('ROLE_3')" style="display: none;"><span class="uid" name="uid" sec:authentication="principal.medical.uid">길동</span></label>
-                <input type="hidden" name="uid" th:value="${#authentication.principal.member.uid}">    
+                <input type="hidden" name="uid" sec:authorize="hasAuthority('ROLE_1')" th:value="${#authentication.principal.member.uid}">    
             
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f25185293d664bcd951443d8b8e4a67&libraries=services"></script>
 			<script>

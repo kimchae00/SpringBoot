@@ -64,6 +64,23 @@
         			return false;
         		}
         	});
+        	
+        	$('#GoRe').click(function(){
+        		if(level == 1){
+        			return true;
+        		}else{
+        			alert('일반회원만 예약 가능합니다.');
+        			return false;
+        		}
+        	});
+        	$('#wrapper').on('click', '.gore', function() {
+        	    if (level == 1) {
+        	        return true;
+        	    } else {
+        	        alert('일반회원만 예약 가능합니다.');
+        	        return false;
+        	    }
+        	});
         });
     </script>
 </head>
