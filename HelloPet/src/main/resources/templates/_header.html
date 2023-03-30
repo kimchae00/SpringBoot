@@ -35,7 +35,7 @@
         	console.log(level);
         	
         	
-        	$('#btnDt').click(function(){
+        	$('.btnDt').click(function(){
         		if(level != null && $.trim(level) !== ''){
         			return true;
         		}else{
@@ -43,7 +43,15 @@
         			return false;
         		}
         	});
-    		$('#btnga').click(function(){
+    		$('.btnga').click(function(){
+        		if(level != null && $.trim(level) !== ''){
+        			return true;
+        		}else{
+        			alert('로그인이 필요합니다.');
+        			return false;
+        		}
+        	});
+    		$('.titleHs').click(function(){
         		if(level != null && $.trim(level) !== ''){
         			return true;
         		}else{
