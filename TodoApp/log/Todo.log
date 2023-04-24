@@ -1485,3 +1485,11 @@ java.lang.IllegalStateException: Optional int parameter 'no' is present but cann
 2023-04-24 12:26:21.888  INFO 7832 --- [main] kr.co.todo.TodoAppApplicationTests       : Starting TodoAppApplicationTests using Java 17.0.5 on DESKTOP-QOTDKI5 with PID 7832 (started by java1 in C:\Users\java1\Desktop\Workspace\SpringBoot\TodoApp)
 2023-04-24 12:26:21.890  INFO 7832 --- [main] kr.co.todo.TodoAppApplicationTests       : No active profile set, falling back to 1 default profile: "default"
 2023-04-24 12:26:24.138  INFO 7832 --- [main] kr.co.todo.TodoAppApplicationTests       : Started TodoAppApplicationTests in 2.612 seconds (JVM running for 3.63)
+2023-04-24 13:36:32.951  INFO 8268 --- [main] kr.co.todo.TodoAppApplicationTests       : Starting TodoAppApplicationTests using Java 17.0.5 on DESKTOP-QOTDKI5 with PID 8268 (started by java1 in C:\Users\java1\Desktop\Workspace\SpringBoot\TodoApp)
+2023-04-24 13:36:32.953  INFO 8268 --- [main] kr.co.todo.TodoAppApplicationTests       : No active profile set, falling back to 1 default profile: "default"
+2023-04-24 13:36:34.982  INFO 8268 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-04-24 13:36:35.312  INFO 8268 --- [main] kr.co.todo.TodoAppApplicationTests       : Started TodoAppApplicationTests in 2.762 seconds (JVM running for 3.803)
+2023-04-24 13:39:49.015  INFO 8436 --- [main] kr.co.todo.TodoAppApplicationTests       : Starting TodoAppApplicationTests using Java 17.0.5 on DESKTOP-QOTDKI5 with PID 8436 (started by java1 in C:\Users\java1\Desktop\Workspace\SpringBoot\TodoApp)
+2023-04-24 13:39:49.017  INFO 8436 --- [main] kr.co.todo.TodoAppApplicationTests       : No active profile set, falling back to 1 default profile: "default"
+2023-04-24 13:39:51.075  INFO 8436 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2023-04-24 13:39:51.398  INFO 8436 --- [main] kr.co.todo.TodoAppApplicationTests       : Started TodoAppApplicationTests in 2.785 seconds (JVM running for 3.975)
