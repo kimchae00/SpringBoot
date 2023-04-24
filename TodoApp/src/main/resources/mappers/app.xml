@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.todo.dao.AppDAO">
+	<insert id="insertTodo">
+		insert into `todo` set
+			`content`=#{content},
+			`rdate`=NOW();
+	</insert>
+	<select id="selectTodo" resultType="kr.co.todo.vo.TodoVO"></select>
+	<select id="selectTodos" resultType="kr.co.todo.vo.TodoVO">
+		select * from `todo`;
+	</select>
+	<update id="updateTodo"></update>
+	<delete id="deleteTodo">
+		delete from `todo` where `no`=#{no};
+	</delete>
+	<delete id="deleteTodoAll">
+		delete from `todo`;
+	</delete>
+</mapper>
