@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,13 +28,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("api")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ArticleController {
 
 	@Autowired
 	private ArticleService service;
 	
-	@GetMapping("/list")
+	@GetMapping("list")
 	public Map<String, Object> list(String pg) {
 		
 		int currentPage = service.getCurrentPage(pg);
@@ -56,7 +58,7 @@ public class ArticleController {
 		return resultMap;
 	}
 	
-	@GetMapping("/modify")
+	@GetMapping("modify")
 	public String modify(Model model, int no, String pg) {
 		int currentPage = service.getCurrentPage(pg);
 		ArticleVO article = service.selectArticle(no);
@@ -72,7 +74,7 @@ public class ArticleController {
 		return "redirect:/view?no="+vo.getNo()+"&pg="+currentPage;
 	}
 	
-	@GetMapping("/view")
+	@GetMapping("view")
 	public String view(int no, Model model, String pg) {
 		int currentPage = service.getCurrentPage(pg);
 		
@@ -95,12 +97,12 @@ public class ArticleController {
 		return respEntity;
 	}
 
-	@GetMapping("/write")
+	@GetMapping("write")
 	public String write() {
 		return "write";
 	}
 	
-	@PostMapping("/write")
+	@PostMapping("write")
 	public int write(@RequestBody ArticleVO vo, HttpServletRequest req) {
 		String regip = req.getRemoteAddr();
 		vo.setRegip(regip);
